@@ -15,7 +15,7 @@ from database import (
     remove_todo
 )
 
-origins=['https://lcoalhost:3000']
+origins=['http://localhost:3000','http://localhost:3001']
 
 app.add_middleware(
     CORSMiddleware,

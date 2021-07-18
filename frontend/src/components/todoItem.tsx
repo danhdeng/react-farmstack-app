@@ -14,6 +14,7 @@ const ToDoItemContainer=styled.div`
     `}
 `;
 
+
 const DescriptionContaier=styled.p`
     ${tw`
         text-xs
@@ -42,9 +43,11 @@ export default function TodoItem(props: ToDoItemProps) {
     }
     return (
         <ToDoItemContainer>
-            <Title>{title}:</Title>
-            <DescriptionContaier>{description}</DescriptionContaier>
+            <p>
+            <Title>{title}:</Title> {description}
             <Button onClick={()=>deletehandler(title)}>Delete</Button>
+            <hr></hr>
+            </p>
         </ToDoItemContainer>
     )
 }

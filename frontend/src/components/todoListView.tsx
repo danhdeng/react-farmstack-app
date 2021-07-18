@@ -8,7 +8,16 @@ interface ITodoListViewProps{
     todoList: ITodo[]
 }
 
-const TodoListContainer=styled.ul`
+const TodoListContainer=styled.div`
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+`;
+const TodoList=styled.ul`
     ${tw`
         flex
         text-base
@@ -18,10 +27,11 @@ const TodoListContainer=styled.ul`
 export default function TodoListView(props:ITodoListViewProps) {
     return (
         <TodoListContainer>
+            <ul>
             {
-                props.todoList.map(item=> <TodoItem todo={item}/>) 
+                props.todoList.map(item=><TodoItem todo={item} key={item.title} />) 
             }
-            
+            </ul>
         </TodoListContainer>
     )
 }

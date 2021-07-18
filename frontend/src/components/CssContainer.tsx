@@ -10,8 +10,8 @@ export const CardContainer=styled.div`
 export const Button=styled.button`
     ${tw`pt-1
      pb-1
-     pl-5
-     pr-5 
+     pl-1
+     pr-1
      m-1 
      text-sm 
      font-bold
@@ -26,5 +26,19 @@ export const Button=styled.button`
      rounded-md 
      outline-none 
      focus:outline-none`}
+`;
+
+export const Task=styled.h5`
+${tw`
+    flex
+    flex-col
+    bg-black
+    text-white
+    items-center
+    justify-center
+    rounded
+    mb-3
+    mt-1.5
+`}
 `;
 

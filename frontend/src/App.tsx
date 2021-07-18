@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {ITodo} from '../typing/todo';
 import styled from "styled-components";
 import tw from "twin.macro"; 
+import AddTodoItem from "./components/addTodoItem";
+import {Task} from './components/CssContainer'
 
 const AppContainer=styled.div`
   box-shadow: 0 1.3px 12px -3px rgba(0,0,0,0.4);
@@ -21,42 +23,66 @@ const AppContainer=styled.div`
   margin-top:15px;
 `;
 
-const Header=styled.h1`
+const TaskManager=styled.h1`
     position: relative;
     display: block;
-    padding: .5rem 1rem;
+    padding: .5rem 0.5rem;
     color: #212529;
     text-decoration: none;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.125);
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    width:25rem;
+    width:24.5rem;
     ${
       tw`
+        flex
+        flex-col
         text-white
-        bg-blue-400
+        bg-blue-600
         items-center
+        justify-center
         mt-3
+        rounded
       `
-    }
-    
+    }  
 `;
+
+const AppName=styled.h6`
+  ${tw`
+      flex
+      flex-col
+      bg-blue-600
+      text-white
+      items-center
+      justify-center
+      rounded
+  `}
+`;
+
+const CopyRight=styled.h6`
+  ${tw`
+      flex
+      flex-col
+      bg-yellow-500
+      text-white
+      items-center
+      justify-center
+      rounded
+      mb-3
+      py-1 
+  `}
+`;
+
+
 
 function App() {
 
   const [todoList, setTodoList] = useState([{}] as ITodo[])
   const [title, setTitle] = useState('') 
   const [desc, setDesc] = useState('')
-  const maxWidth={
-
-    
-  }
-    
 
   // Read all todos
   useEffect(() => {
@@ -75,26 +101,17 @@ function App() {
   return (
     <>
     <AppContainer>
-      {/* this is a test
-    </AppContainer>
-    <div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{"width":"400px", "backgroundColor":"white", "marginTop":"15px"}} > */}
-      {/* <h1 className="card text-white bg-primary mb-1 mt-3" style={{"width":"23rem"}}>Task Manager</h1> */}
-      <Header>Task Manager</Header>
-      <h6 className="card text-white bg-primary mb-3">FASTAPI - React - MongoDB</h6>
+      <TaskManager>Task Manager</TaskManager>
+      <AppName>FASTAPI - React - MongoDB</AppName>
      <div className="card-body">
-      <h5 className="card text-white bg-dark mb-3">Add Your Task</h5>
-      <span className="card-text"> 
-        <input className="mb-2 form-control titleIn" onChange={event => setTitle(event.target.value)} placeholder='Title'/> 
-        <input className="mb-2 form-control desIn" onChange={event => setDesc(event.target.value)}   placeholder='Description'/>
-      <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font":"bold"}}  onClick={addTodoHandler}>Add Task</button>
-      </span>
-      <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+       <Task>Add Your Task</Task>
+       <AddTodoItem />
+      <Task>Your Tasks</Task>
       <div >
       <TodoListView todoList={todoList} />
       </div>
       </div>
-      <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>
-    {/* </div> */}
+      <CopyRight>Copyright 2021, All rights reserved &copy;</CopyRight>
     </AppContainer>
     </>
   );
