@@ -15,4 +15,7 @@ React:
 https://reactjs.org/docs/getting-started.html
 
 # how to start the backend
-run python -m uvicorn main:app --reload
+python -m uvicorn main:app --reload
+
+#how to start the frontend
+yarn start
